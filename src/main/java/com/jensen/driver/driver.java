@@ -1,8 +1,8 @@
 package com.jensen.driver;
 
-
 import java.math.BigInteger;
 import java.util.Random;
+
 /**
  * Created by tjjensenjr on 3/4/15.
  */
