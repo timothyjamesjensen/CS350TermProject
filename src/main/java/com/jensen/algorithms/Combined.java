@@ -3,16 +3,16 @@ package com.jensen.algorithms;
 import java.math.BigInteger;
 
 /**
- * Created by tjjensenjr on 3/4/15.
+ * Created by tjjensenjr on 3/12/15.
  */
-public class Karatsuba {
+public class Combined {
 
     static Elementary elementary = new Elementary();
 
     public static BigInteger algorithm(BigInteger x, BigInteger y) {
         int N = Math.max(x.bitLength(), y.bitLength());
+        if (N <= 690) return new BigInteger(elementary.multiply(x.toString(),y.toString()));
 
-        if (N <= 1) return x.multiply(y);
 
         N = (N / 2) + (N % 2);
 
@@ -21,11 +21,10 @@ public class Karatsuba {
         BigInteger d = y.shiftRight(N);
         BigInteger c = y.subtract(d.shiftLeft(N));
 
-        BigInteger ac = Karatsuba.algorithm(a, c);
-        BigInteger bd = Karatsuba.algorithm(b, d);
-        BigInteger abcd = Karatsuba.algorithm(a.add(b), c.add(d));
+        BigInteger ac = Combined.algorithm(a, c);
+        BigInteger bd = Combined.algorithm(b, d);
+        BigInteger abcd = Combined.algorithm(a.add(b), c.add(d));
 
         return ac.add(abcd.subtract(ac).subtract(bd).shiftLeft(N)).add(bd.shiftLeft(2 * N));
     }
-
 }

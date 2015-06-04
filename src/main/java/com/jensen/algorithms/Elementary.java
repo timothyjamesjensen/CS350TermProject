@@ -77,7 +77,7 @@ public class Elementary {
             for (int index = count; index > 1; index--) {
                 result1 = result1 + 0;
             }
-            result2 = add(result2,result1);//calling add(str1,str2) for adding numbers
+            result2 = add(result2,result1); //calling add(str1,str2) for adding numbers
             result1 = "";
         }
         return result2;
